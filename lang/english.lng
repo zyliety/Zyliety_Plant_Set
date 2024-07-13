@@ -1,0 +1,32 @@
+##grflangid 0x01
+
+#Main grf title and description
+STR_GRF_NAME        :Zyliety's Plant Set V1-Release
+STR_GRF_DESCRIPTION :{YELLOW}Zyliety's Plant Set,2024/7/9. {}{WHITE}Draw by: Zyliety, Moonlight. {}Code by:Zyliety.{}License:GPLv2 or higher
+
+#error messages
+STR_OPENTTD_VERSION :1.2.0 (r22723)
+
+#object classes
+STR_ZYPS		:{YELLOW}Zyliety Plant set
+
+STR_ObjectMenu		:Object Menu
+
+STR_PLAN            :    Plant Flields
+
+
+#object name and description
+STR_FLOWER_1            :flower1
+STR_FLOWER_2            :flower2
+STR_FLOWER_3            :flower3
+STR_FLOWER_4            :flower4
+STR_FLOWER_5            :flower5
+STR_FLOWER_6            :flower6
+STR_FLOWER_7            :flower7
+STR_FLOWER_8            :flower8
+STR_FLOWER_9            :flower9
+STR_FLOWER_10            :flower10
+STR_FLOWER_11            :flower11
+STR_FLOWER_12            :flower12
+STR_FLOWER_13            :flower13
+STR_FLOWER_14            :flower14
