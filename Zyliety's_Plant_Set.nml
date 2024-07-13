@@ -1,0 +1,3838 @@
+/*
+ *  Copyright (C) 2024 Zyliety's Plant Set V1
+ *  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+ *  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ *  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
+// define the newgrf
+grf {
+    grfid:                  "ZYPL";
+    name:                   string(STR_GRF_NAME);
+    desc:                   string(STR_GRF_DESCRIPTION);
+    version:                1;
+    min_compatible_version: 1;
+}
+template template_plant(x,y,filename) {
+    [x+14, y+2, 64, 44, -31, -13, ANIM, filename]
+    [x+89, y+2, 64, 44, -31, -13, ANIM, filename]
+    [x+164, y+2, 64, 44, -31, -13, ANIM, filename]
+    [x+239, y+2, 64, 44, -31, -13, ANIM, filename]
+}
+template template_flat_low(x,y,filename) {
+    [x+14, y+2, 64, 44, -31, -13, filename]
+    [x+89, y+2, 64, 44, -31, -13, filename]
+    [x+164, y+2, 64, 44, -31, -13, filename]
+    [x+239, y+2, 64, 44, -31, -13, filename]
+}
+
+/***************************************************
+THIS ENTRY MUST BE THE FIRST OBJECT BEFORE ANY OTHERS
+*****************************************************/
+
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_ObjectMenu) {
+    template_flat_low(0,0,"gfx/flatlow.png")
+}
+alternative_sprites (spriteset_ObjectMenu, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "") {
+    template_flat_low(0,0,"gfx/ObjectMenu_32.png")
+}
+
+spriteset (spriteset_ObjectMenu_SNOW) {
+    template_flat_low(0,0,"gfx/flatlow.png")
+}
+alternative_sprites (spriteset_ObjectMenu_SNOW, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "") {
+    template_flat_low(0,0,"gfx/ObjectMenu_32.png")
+}
+
+spriteset (spriteset_ObjectMenu_PURCHASE) {
+    template_flat_low(0,0,"gfx/flatlow.png")
+}
+alternative_sprites (spriteset_ObjectMenu_PURCHASE, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "") {
+    template_flat_low(0,0,"gfx/ObjectMenu_32.png")
+}
+
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_ObjectMenu_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_ObjectMenu(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 0;
+    }
+
+building {
+        sprite: spriteset_ObjectMenu_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 0;
+    }
+
+}
+
+spritelayout spritelayout_ObjectMenu_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_ObjectMenu_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 0;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_ObjectMenu_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_ObjectMenu(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 0;
+    }
+
+building {
+        sprite: spriteset_ObjectMenu_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 0;
+    }
+
+}
+
+spritelayout spritelayout_ObjectMenu_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_ObjectMenu_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 0;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_ObjectMenu_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_ObjectMenu(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 0;
+    }
+
+building {
+        sprite: spriteset_ObjectMenu_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 0;
+    }
+
+}
+
+spritelayout spritelayout_ObjectMenu_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_ObjectMenu_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 0;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_ObjectMenu_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_ObjectMenu(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 0;
+    }
+
+building {
+        sprite: spriteset_ObjectMenu_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 0;
+    }
+
+}
+
+spritelayout spritelayout_ObjectMenu_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_ObjectMenu_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 0;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_ObjectMenu_view, view) {
+    1:  spritelayout_ObjectMenu_2;
+    2:  spritelayout_ObjectMenu_3;
+    3:  spritelayout_ObjectMenu_4;
+    spritelayout_ObjectMenu_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_ObjectMenu_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_ObjectMenu_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_ObjectMenu_purchase, view) {
+    1:  spritelayout_ObjectMenu_2_purchase;
+    2:  spritelayout_ObjectMenu_3_purchase;
+    3:  spritelayout_ObjectMenu_4_purchase;
+    spritelayout_ObjectMenu_1_purchase;
+}
+
+item (FEAT_OBJECTS, ObjectMenu, 000) {
+    property {
+        class: "ZYPS";
+        classname: string(STR_ZYPS);
+        name: string(STR_ObjectMenu);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_ObjectMenu_object;
+        purchase: switch_ObjectMenu_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************flower1************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower1) {
+    template_plant(0,0,"gfx/flower1.png")
+}
+spriteset (spriteset_flower1_SNOW) {
+    template_plant(0,0,"gfx/flower1.png")
+}
+
+spriteset (spriteset_flower1_PURCHASE) {
+    template_plant(0,0,"gfx/flower1.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower1_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower1(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower1_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower1_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower1_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower1_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower1(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower1_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower1_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower1_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower1_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower1(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower1_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower1_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower1_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower1_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower1(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower1_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower1_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower1_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower1_view, view) {
+    1:  spritelayout_flower1_2;
+    2:  spritelayout_flower1_3;
+    3:  spritelayout_flower1_4;
+    spritelayout_flower1_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower1_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower1_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower1_purchase, view) {
+    1:  spritelayout_flower1_2_purchase;
+    2:  spritelayout_flower1_3_purchase;
+    3:  spritelayout_flower1_4_purchase;
+    spritelayout_flower1_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower1, 001) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_1);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower1_object;
+        purchase: switch_flower1_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower2************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower2) {
+    template_plant(0,0,"gfx/flower2.png")
+}
+spriteset (spriteset_flower2_SNOW) {
+    template_plant(0,0,"gfx/flower2.png")
+}
+
+spriteset (spriteset_flower2_PURCHASE) {
+    template_plant(0,0,"gfx/flower2.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower2_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower2(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower2_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower2_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower2_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower2_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower2(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower2_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower2_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower2_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower2_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower2(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower2_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower2_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower2_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower2_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower2(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower2_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower2_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower2_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower2_view, view) {
+    1:  spritelayout_flower2_2;
+    2:  spritelayout_flower2_3;
+    3:  spritelayout_flower2_4;
+    spritelayout_flower2_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower2_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower2_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower2_purchase, view) {
+    1:  spritelayout_flower2_2_purchase;
+    2:  spritelayout_flower2_3_purchase;
+    3:  spritelayout_flower2_4_purchase;
+    spritelayout_flower2_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower2, 002) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_2);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower2_object;
+        purchase: switch_flower2_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+
+//************flower3************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower3) {
+    template_plant(0,0,"gfx/flower3.png")
+}
+spriteset (spriteset_flower3_SNOW) {
+    template_plant(0,0,"gfx/flower3.png")
+}
+
+spriteset (spriteset_flower3_PURCHASE) {
+    template_plant(0,0,"gfx/flower3.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower3_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower3(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower3_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower3_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower3_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower3_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower3(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower3_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower3_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower3_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower3_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower3(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower3_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower3_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower3_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower3_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower3(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower3_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower3_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower3_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower3_view, view) {
+    1:  spritelayout_flower3_2;
+    2:  spritelayout_flower3_3;
+    3:  spritelayout_flower3_4;
+    spritelayout_flower3_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower3_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower3_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower3_purchase, view) {
+    1:  spritelayout_flower3_2_purchase;
+    2:  spritelayout_flower3_3_purchase;
+    3:  spritelayout_flower3_4_purchase;
+    spritelayout_flower3_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower3, 003) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_3);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower3_object;
+        purchase: switch_flower3_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower4************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower4) {
+    template_plant(0,0,"gfx/flower4.png")
+}
+spriteset (spriteset_flower4_SNOW) {
+    template_plant(0,0,"gfx/flower4.png")
+}
+
+spriteset (spriteset_flower4_PURCHASE) {
+    template_plant(0,0,"gfx/flower4.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower4_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower4(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower4_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower4_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower4_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower4_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower4(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower4_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower4_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower4_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower4_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower4(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower4_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower4_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower4_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower4_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower4(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower4_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower4_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower4_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower4_view, view) {
+    1:  spritelayout_flower4_2;
+    2:  spritelayout_flower4_3;
+    3:  spritelayout_flower4_4;
+    spritelayout_flower4_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower4_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower4_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower4_purchase, view) {
+    1:  spritelayout_flower4_2_purchase;
+    2:  spritelayout_flower4_3_purchase;
+    3:  spritelayout_flower4_4_purchase;
+    spritelayout_flower4_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower4, 004) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_4);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower4_object;
+        purchase: switch_flower4_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower5************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower5) {
+    template_plant(0,0,"gfx/flower5.png")
+}
+spriteset (spriteset_flower5_SNOW) {
+    template_plant(0,0,"gfx/flower5.png")
+}
+
+spriteset (spriteset_flower5_PURCHASE) {
+    template_plant(0,0,"gfx/flower5.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower5_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower5(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower5_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower5_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower5_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower5_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower5(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower5_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower5_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower5_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower5_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower5(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower5_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower5_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower5_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower5_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower5(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower5_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower5_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower5_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower5_view, view) {
+    1:  spritelayout_flower5_2;
+    2:  spritelayout_flower5_3;
+    3:  spritelayout_flower5_4;
+    spritelayout_flower5_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower5_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower5_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower5_purchase, view) {
+    1:  spritelayout_flower5_2_purchase;
+    2:  spritelayout_flower5_3_purchase;
+    3:  spritelayout_flower5_4_purchase;
+    spritelayout_flower5_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower5, 005) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_5);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower5_object;
+        purchase: switch_flower5_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower6************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower6) {
+    template_plant(0,0,"gfx/flower6.png")
+}
+spriteset (spriteset_flower6_SNOW) {
+    template_plant(0,0,"gfx/flower6.png")
+}
+
+spriteset (spriteset_flower6_PURCHASE) {
+    template_plant(0,0,"gfx/flower6.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower6_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower6(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower6_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower6_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower6_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower6_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower6(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower6_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower6_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower6_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower6_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower6(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower6_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower6_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower6_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower6_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower6(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower6_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower6_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower6_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower6_view, view) {
+    1:  spritelayout_flower6_2;
+    2:  spritelayout_flower6_3;
+    3:  spritelayout_flower6_4;
+    spritelayout_flower6_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower6_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower6_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower6_purchase, view) {
+    1:  spritelayout_flower6_2_purchase;
+    2:  spritelayout_flower6_3_purchase;
+    3:  spritelayout_flower6_4_purchase;
+    spritelayout_flower6_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower6, 006) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_6);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower6_object;
+        purchase: switch_flower6_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower7************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower7) {
+    template_plant(0,0,"gfx/flower7.png")
+}
+spriteset (spriteset_flower7_SNOW) {
+    template_plant(0,0,"gfx/flower7.png")
+}
+
+spriteset (spriteset_flower7_PURCHASE) {
+    template_plant(0,0,"gfx/flower7.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower7_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower7(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower7_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower7_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower7_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower7_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower7(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower7_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower7_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower7_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower7_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower7(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower7_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower7_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower7_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower7_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower7(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower7_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower7_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower7_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower7_view, view) {
+    1:  spritelayout_flower7_2;
+    2:  spritelayout_flower7_3;
+    3:  spritelayout_flower7_4;
+    spritelayout_flower7_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower7_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower7_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower7_purchase, view) {
+    1:  spritelayout_flower7_2_purchase;
+    2:  spritelayout_flower7_3_purchase;
+    3:  spritelayout_flower7_4_purchase;
+    spritelayout_flower7_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower7, 007) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_7);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower7_object;
+        purchase: switch_flower7_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower8************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower8) {
+    template_plant(0,0,"gfx/flower8.png")
+}
+spriteset (spriteset_flower8_SNOW) {
+    template_plant(0,0,"gfx/flower8.png")
+}
+
+spriteset (spriteset_flower8_PURCHASE) {
+    template_plant(0,0,"gfx/flower8.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower8_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower8(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower8_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower8_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower8_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower8_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower8(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower8_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower8_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower8_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower8_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower8(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower8_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower8_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower8_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower8_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower8(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower8_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower8_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower8_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower8_view, view) {
+    1:  spritelayout_flower8_2;
+    2:  spritelayout_flower8_3;
+    3:  spritelayout_flower8_4;
+    spritelayout_flower8_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower8_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower8_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower8_purchase, view) {
+    1:  spritelayout_flower8_2_purchase;
+    2:  spritelayout_flower8_3_purchase;
+    3:  spritelayout_flower8_4_purchase;
+    spritelayout_flower8_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower8, 008) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_8);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower8_object;
+        purchase: switch_flower8_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower9************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower9) {
+    template_plant(0,0,"gfx/flower9.png")
+}
+spriteset (spriteset_flower9_SNOW) {
+    template_plant(0,0,"gfx/flower9.png")
+}
+
+spriteset (spriteset_flower9_PURCHASE) {
+    template_plant(0,0,"gfx/flower9.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower9_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower9(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower9_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower9_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower9_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower9_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower9(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower9_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower9_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower9_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower9_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower9(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower9_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower9_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower9_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower9_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower9(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower9_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower9_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower9_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower9_view, view) {
+    1:  spritelayout_flower9_2;
+    2:  spritelayout_flower9_3;
+    3:  spritelayout_flower9_4;
+    spritelayout_flower9_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower9_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower9_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower9_purchase, view) {
+    1:  spritelayout_flower9_2_purchase;
+    2:  spritelayout_flower9_3_purchase;
+    3:  spritelayout_flower9_4_purchase;
+    spritelayout_flower9_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower9, 009) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_9);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower9_object;
+        purchase: switch_flower9_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower10************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower10) {
+    template_plant(0,0,"gfx/flower10.png")
+}
+spriteset (spriteset_flower10_SNOW) {
+    template_plant(0,0,"gfx/flower10.png")
+}
+
+spriteset (spriteset_flower10_PURCHASE) {
+    template_plant(0,0,"gfx/flower10.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower10_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower10(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower10_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower10_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower10_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower10_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower10(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower10_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower10_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower10_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower10_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower10(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower10_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower10_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower10_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower10_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower10(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower10_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower10_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower10_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower10_view, view) {
+    1:  spritelayout_flower10_2;
+    2:  spritelayout_flower10_3;
+    3:  spritelayout_flower10_4;
+    spritelayout_flower10_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower10_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower10_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower10_purchase, view) {
+    1:  spritelayout_flower10_2_purchase;
+    2:  spritelayout_flower10_3_purchase;
+    3:  spritelayout_flower10_4_purchase;
+    spritelayout_flower10_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower10, 010) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_10);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower10_object;
+        purchase: switch_flower10_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower11************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower11) {
+    template_plant(0,0,"gfx/flower11.png")
+}
+spriteset (spriteset_flower11_SNOW) {
+    template_plant(0,0,"gfx/flower11.png")
+}
+
+spriteset (spriteset_flower11_PURCHASE) {
+    template_plant(0,0,"gfx/flower11.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower11_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower11(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower11_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower11_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower11_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower11_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower11(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower11_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower11_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower11_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower11_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower11(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower11_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower11_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower11_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower11_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower11(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower11_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower11_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower11_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower11_view, view) {
+    1:  spritelayout_flower11_2;
+    2:  spritelayout_flower11_3;
+    3:  spritelayout_flower11_4;
+    spritelayout_flower11_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower11_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower11_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower11_purchase, view) {
+    1:  spritelayout_flower11_2_purchase;
+    2:  spritelayout_flower11_3_purchase;
+    3:  spritelayout_flower11_4_purchase;
+    spritelayout_flower11_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower11, 011) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_11);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower11_object;
+        purchase: switch_flower11_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower12************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower12) {
+    template_plant(0,0,"gfx/flower12.png")
+}
+spriteset (spriteset_flower12_SNOW) {
+    template_plant(0,0,"gfx/flower12.png")
+}
+
+spriteset (spriteset_flower12_PURCHASE) {
+    template_plant(0,0,"gfx/flower12.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower12_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower12(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower12_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower12_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower12_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower12_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower12(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower12_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower12_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower12_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower12_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower12(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower12_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower12_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower12_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower12_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower12(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower12_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower12_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower12_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower12_view, view) {
+    1:  spritelayout_flower12_2;
+    2:  spritelayout_flower12_3;
+    3:  spritelayout_flower12_4;
+    spritelayout_flower12_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower12_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower12_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower12_purchase, view) {
+    1:  spritelayout_flower12_2_purchase;
+    2:  spritelayout_flower12_3_purchase;
+    3:  spritelayout_flower12_4_purchase;
+    spritelayout_flower12_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower12, 012) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_12);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower12_object;
+        purchase: switch_flower12_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower13************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower13) {
+    template_plant(0,0,"gfx/flower13.png")
+}
+spriteset (spriteset_flower13_SNOW) {
+    template_plant(0,0,"gfx/flower13.png")
+}
+
+spriteset (spriteset_flower13_PURCHASE) {
+    template_plant(0,0,"gfx/flower13.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower13_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: GROUNDSPRITE_WATER;
+   }
+
+    building {
+        sprite: spriteset_flower13(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower13_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower13_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_WATER;
+   }
+   building {
+      sprite:spriteset_flower13_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower13_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower13(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower13_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower13_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower13_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower13_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower13(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower13_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower13_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower13_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower13_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower13(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower13_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower13_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower13_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower13_view, view) {
+    1:  spritelayout_flower13_2;
+    2:  spritelayout_flower13_3;
+    3:  spritelayout_flower13_4;
+    spritelayout_flower13_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower13_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower13_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower13_purchase, view) {
+    1:  spritelayout_flower13_2_purchase;
+    2:  spritelayout_flower13_3_purchase;
+    3:  spritelayout_flower13_4_purchase;
+    spritelayout_flower13_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower13, 013) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_13);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_ON_WATER, OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower13_object;
+        purchase: switch_flower13_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower14************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower14) {
+    template_plant(0,0,"gfx/flower14.png")
+}
+spriteset (spriteset_flower14_SNOW) {
+    template_plant(0,0,"gfx/flower14.png")
+}
+
+spriteset (spriteset_flower14_PURCHASE) {
+    template_plant(0,0,"gfx/flower14.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower14_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: GROUNDSPRITE_WATER;
+   }
+
+    building {
+        sprite: spriteset_flower14(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower14_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower14_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_WATER;
+   }
+   building {
+      sprite:spriteset_flower14_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower14_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower14(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower14_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower14_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower14_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower14_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower14(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower14_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower14_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower14_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower14_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower14(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower14_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower14_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower14_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower14_view, view) {
+    1:  spritelayout_flower14_2;
+    2:  spritelayout_flower14_3;
+    3:  spritelayout_flower14_4;
+    spritelayout_flower14_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower14_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower14_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower14_purchase, view) {
+    1:  spritelayout_flower14_2_purchase;
+    2:  spritelayout_flower14_3_purchase;
+    3:  spritelayout_flower14_4_purchase;
+    spritelayout_flower14_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower14, 014) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_14);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_ON_WATER, OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower14_object;
+        purchase: switch_flower14_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
