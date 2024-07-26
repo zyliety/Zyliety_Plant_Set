@@ -10,7 +10,7 @@ grf {
     grfid:                  "ZYPL";
     name:                   string(STR_GRF_NAME);
     desc:                   string(STR_GRF_DESCRIPTION);
-    version:                1;
+    version:                2;
     min_compatible_version: 1;
 }
 template template_plant(x,y,filename) {
@@ -24,6 +24,12 @@ template template_flat_low(x,y,filename) {
     [x+89, y+2, 64, 44, -31, -13, filename]
     [x+164, y+2, 64, 44, -31, -13, filename]
     [x+239, y+2, 64, 44, -31, -13, filename]
+}
+template template_tallflat(x,y,filename) {
+    [x+14, y+2, 64, 244, -31, -213, filename]
+    [x+89, y+2, 64, 244, -31, -213, filename]
+    [x+164, y+2, 64, 244, -31, -213, filename]
+    [x+239, y+2, 64, 244, -31, -213, filename]
 }
 
 /***************************************************
@@ -293,6 +299,8 @@ item (FEAT_OBJECTS, ObjectMenu, 000) {
 
       }
 }
+//************startflower********//
+//****************************************************//
 //************flower1************//
 //spritesets with 4 directions, SNOW-version and the PURCHASE-menu
 spriteset (spriteset_flower1) {
@@ -3835,4 +3843,5592 @@ item (FEAT_OBJECTS, flower14, 014) {
         purchase: switch_flower14_purchase;
         autoslope: return CB_RESULT_AUTOSLOPE;
         }
+}
+//************flower15************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower15) {
+    template_plant(0,0,"gfx/flower15.png")
+}
+spriteset (spriteset_flower15_SNOW) {
+    template_plant(0,0,"gfx/flower15.png")
+}
+
+spriteset (spriteset_flower15_PURCHASE) {
+    template_plant(0,0,"gfx/flower15.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower15_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower15(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower15_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower15_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower15_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower15_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower15(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower15_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower15_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower15_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower15_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower15(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower15_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower15_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower15_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower15_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower15(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower15_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower15_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower15_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower15_view, view) {
+    1:  spritelayout_flower15_2;
+    2:  spritelayout_flower15_3;
+    3:  spritelayout_flower15_4;
+    spritelayout_flower15_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower15_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower15_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower15_purchase, view) {
+    1:  spritelayout_flower15_2_purchase;
+    2:  spritelayout_flower15_3_purchase;
+    3:  spritelayout_flower15_4_purchase;
+    spritelayout_flower15_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower15, 015) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_15);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower15_object;
+        purchase: switch_flower15_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************flower16************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_flower16) {
+    template_plant(0,0,"gfx/flower16.png")
+}
+spriteset (spriteset_flower16_SNOW) {
+    template_plant(0,0,"gfx/flower16.png")
+}
+
+spriteset (spriteset_flower16_PURCHASE) {
+    template_plant(0,0,"gfx/flower16.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_flower16_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower16(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower16_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower16_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower16_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_flower16_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower16(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower16_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower16_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower16_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_flower16_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower16(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite:spriteset_flower16_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower16_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower16_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_flower16_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+
+    building {
+        sprite: spriteset_flower16(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+building {
+        sprite: spriteset_flower16_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 4;
+    }
+
+}
+
+spritelayout spritelayout_flower16_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite:spriteset_flower16_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 4;
+   }
+}
+
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_flower16_view, view) {
+    1:  spritelayout_flower16_2;
+    2:  spritelayout_flower16_3;
+    3:  spritelayout_flower16_4;
+    spritelayout_flower16_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_flower16_object, [
+    STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_flower16_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_flower16_purchase, view) {
+    1:  spritelayout_flower16_2_purchase;
+    2:  spritelayout_flower16_3_purchase;
+    3:  spritelayout_flower16_4_purchase;
+    spritelayout_flower16_1_purchase;
+}
+
+item (FEAT_OBJECTS, flower16, 016) {
+    property {
+        class: "PLAN";
+        classname: string(STR_PLAN);
+        name: string(STR_FLOWER_16);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 0;
+        remove_cost_multiplier: 2;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 0;
+        num_views: 4;
+     }
+    graphics{
+        default: switch_flower16_object;
+        purchase: switch_flower16_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+        }
+}
+//************starttree********//
+//****************************************************//
+//************tree0************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_jptree0) {
+    template_tallflat(0,0,"gfx/JPtree0.png")
+}
+
+spriteset (spriteset_jptree0_SNOW) {
+    template_tallflat(0,0,"gfx/JPtree0.png")
+}
+
+spriteset (spriteset_jptree0_PURCHASE) {
+    template_tallflat(0,0,"gfx/JPtree0.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_jptree0_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree0(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree0_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree0_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree0_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_jptree0_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree0(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree0_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree0_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree0_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_jptree0_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree0(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree0_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree0_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree0_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_jptree0_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree0(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree0_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree0_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree0_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_jptree0_view, view) {
+    1:  spritelayout_jptree0_2;
+    2:  spritelayout_jptree0_3;
+    3:  spritelayout_jptree0_4;
+    spritelayout_jptree0_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_jptree0_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_jptree0_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_jptree0_purchase, view) {
+    1:  spritelayout_jptree0_2_purchase;
+    2:  spritelayout_jptree0_3_purchase;
+    3:  spritelayout_jptree0_4_purchase;
+    spritelayout_jptree0_1_purchase;
+}
+
+item (FEAT_OBJECTS, jptree0, 200) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_0);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_jptree0_object;
+        purchase: switch_jptree0_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree1************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_jptree1) {
+    template_tallflat(0,0,"gfx/JPtree1.png")
+}
+
+spriteset (spriteset_jptree1_SNOW) {
+    template_tallflat(0,0,"gfx/JPtree1.png")
+}
+
+spriteset (spriteset_jptree1_PURCHASE) {
+    template_tallflat(0,0,"gfx/JPtree1.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_jptree1_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree1(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree1_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree1_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree1_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_jptree1_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree1(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree1_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree1_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree1_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_jptree1_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree1(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree1_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree1_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree1_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_jptree1_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree1(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree1_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree1_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree1_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_jptree1_view, view) {
+    1:  spritelayout_jptree1_2;
+    2:  spritelayout_jptree1_3;
+    3:  spritelayout_jptree1_4;
+    spritelayout_jptree1_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_jptree1_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_jptree1_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_jptree1_purchase, view) {
+    1:  spritelayout_jptree1_2_purchase;
+    2:  spritelayout_jptree1_3_purchase;
+    3:  spritelayout_jptree1_4_purchase;
+    spritelayout_jptree1_1_purchase;
+}
+
+item (FEAT_OBJECTS, jptree1, 201) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_1);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_jptree1_object;
+        purchase: switch_jptree1_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree2************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_jptree2) {
+    template_tallflat(0,0,"gfx/JPtree2.png")
+}
+
+spriteset (spriteset_jptree2_SNOW) {
+    template_tallflat(0,0,"gfx/JPtree2.png")
+}
+
+spriteset (spriteset_jptree2_PURCHASE) {
+    template_tallflat(0,0,"gfx/JPtree2.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_jptree2_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree2(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree2_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree2_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree2_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_jptree2_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree2(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree2_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree2_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree2_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_jptree2_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree2(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree2_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree2_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree2_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_jptree2_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree2(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree2_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree2_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree2_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_jptree2_view, view) {
+    1:  spritelayout_jptree2_2;
+    2:  spritelayout_jptree2_3;
+    3:  spritelayout_jptree2_4;
+    spritelayout_jptree2_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_jptree2_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_jptree2_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_jptree2_purchase, view) {
+    1:  spritelayout_jptree2_2_purchase;
+    2:  spritelayout_jptree2_3_purchase;
+    3:  spritelayout_jptree2_4_purchase;
+    spritelayout_jptree2_1_purchase;
+}
+
+item (FEAT_OBJECTS, jptree2, 202) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_2);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_jptree2_object;
+        purchase: switch_jptree2_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree3************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_jptree3) {
+    template_tallflat(0,0,"gfx/JPtree3.png")
+}
+
+spriteset (spriteset_jptree3_SNOW) {
+    template_tallflat(0,0,"gfx/JPtree3.png")
+}
+
+spriteset (spriteset_jptree3_PURCHASE) {
+    template_tallflat(0,0,"gfx/JPtree3.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_jptree3_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree3(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree3_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree3_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree3_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_jptree3_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree3(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree3_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree3_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree3_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_jptree3_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree3(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree3_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree3_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree3_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_jptree3_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree3(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree3_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree3_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree3_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_jptree3_view, view) {
+    1:  spritelayout_jptree3_2;
+    2:  spritelayout_jptree3_3;
+    3:  spritelayout_jptree3_4;
+    spritelayout_jptree3_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_jptree3_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_jptree3_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_jptree3_purchase, view) {
+    1:  spritelayout_jptree3_2_purchase;
+    2:  spritelayout_jptree3_3_purchase;
+    3:  spritelayout_jptree3_4_purchase;
+    spritelayout_jptree3_1_purchase;
+}
+
+item (FEAT_OBJECTS, jptree3, 203) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_3);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_jptree3_object;
+        purchase: switch_jptree3_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree4************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_jptree4) {
+    template_tallflat(0,0,"gfx/JPtree4.png")
+}
+
+spriteset (spriteset_jptree4_SNOW) {
+    template_tallflat(0,0,"gfx/JPtree4.png")
+}
+
+spriteset (spriteset_jptree4_PURCHASE) {
+    template_tallflat(0,0,"gfx/JPtree4.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_jptree4_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree4(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree4_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree4_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree4_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_jptree4_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree4(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree4_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree4_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree4_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_jptree4_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree4(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree4_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree4_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree4_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_jptree4_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree4(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree4_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree4_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree4_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_jptree4_view, view) {
+    1:  spritelayout_jptree4_2;
+    2:  spritelayout_jptree4_3;
+    3:  spritelayout_jptree4_4;
+    spritelayout_jptree4_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_jptree4_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_jptree4_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_jptree4_purchase, view) {
+    1:  spritelayout_jptree4_2_purchase;
+    2:  spritelayout_jptree4_3_purchase;
+    3:  spritelayout_jptree4_4_purchase;
+    spritelayout_jptree4_1_purchase;
+}
+
+item (FEAT_OBJECTS, jptree4, 204) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_4);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_jptree4_object;
+        purchase: switch_jptree4_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree5************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_jptree5) {
+    template_tallflat(0,0,"gfx/JPtree5.png")
+}
+
+spriteset (spriteset_jptree5_SNOW) {
+    template_tallflat(0,0,"gfx/JPtree5.png")
+}
+
+spriteset (spriteset_jptree5_PURCHASE) {
+    template_tallflat(0,0,"gfx/JPtree5.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_jptree5_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree5(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree5_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree5_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree5_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_jptree5_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree5(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree5_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree5_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree5_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_jptree5_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree5(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree5_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree5_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree5_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_jptree5_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree5(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree5_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree5_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree5_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_jptree5_view, view) {
+    1:  spritelayout_jptree5_2;
+    2:  spritelayout_jptree5_3;
+    3:  spritelayout_jptree5_4;
+    spritelayout_jptree5_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_jptree5_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_jptree5_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_jptree5_purchase, view) {
+    1:  spritelayout_jptree5_2_purchase;
+    2:  spritelayout_jptree5_3_purchase;
+    3:  spritelayout_jptree5_4_purchase;
+    spritelayout_jptree5_1_purchase;
+}
+
+item (FEAT_OBJECTS, jptree5, 205) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_5);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_jptree5_object;
+        purchase: switch_jptree5_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree6************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_jptree6) {
+    template_tallflat(0,0,"gfx/JPtree6.png")
+}
+
+spriteset (spriteset_jptree6_SNOW) {
+    template_tallflat(0,0,"gfx/JPtree6.png")
+}
+
+spriteset (spriteset_jptree6_PURCHASE) {
+    template_tallflat(0,0,"gfx/JPtree6.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_jptree6_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree6(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree6_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree6_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree6_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_jptree6_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree6(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree6_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree6_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree6_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_jptree6_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree6(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree6_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree6_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree6_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_jptree6_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree6(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree6_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree6_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree6_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_jptree6_view, view) {
+    1:  spritelayout_jptree6_2;
+    2:  spritelayout_jptree6_3;
+    3:  spritelayout_jptree6_4;
+    spritelayout_jptree6_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_jptree6_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_jptree6_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_jptree6_purchase, view) {
+    1:  spritelayout_jptree6_2_purchase;
+    2:  spritelayout_jptree6_3_purchase;
+    3:  spritelayout_jptree6_4_purchase;
+    spritelayout_jptree6_1_purchase;
+}
+
+item (FEAT_OBJECTS, jptree6, 206) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_6);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_jptree6_object;
+        purchase: switch_jptree6_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree7************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_jptree7) {
+    template_tallflat(0,0,"gfx/JPtree7.png")
+}
+
+spriteset (spriteset_jptree7_SNOW) {
+    template_tallflat(0,0,"gfx/JPtree7.png")
+}
+
+spriteset (spriteset_jptree7_PURCHASE) {
+    template_tallflat(0,0,"gfx/JPtree7.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_jptree7_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree7(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree7_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree7_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree7_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_jptree7_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree7(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree7_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree7_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree7_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_jptree7_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree7(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree7_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree7_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree7_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_jptree7_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree7(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree7_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree7_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree7_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_jptree7_view, view) {
+    1:  spritelayout_jptree7_2;
+    2:  spritelayout_jptree7_3;
+    3:  spritelayout_jptree7_4;
+    spritelayout_jptree7_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_jptree7_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_jptree7_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_jptree7_purchase, view) {
+    1:  spritelayout_jptree7_2_purchase;
+    2:  spritelayout_jptree7_3_purchase;
+    3:  spritelayout_jptree7_4_purchase;
+    spritelayout_jptree7_1_purchase;
+}
+
+item (FEAT_OBJECTS, jptree7, 207) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_7);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_jptree7_object;
+        purchase: switch_jptree7_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree8************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_jptree8) {
+    template_tallflat(0,0,"gfx/JPtree8.png")
+}
+
+spriteset (spriteset_jptree8_SNOW) {
+    template_tallflat(0,0,"gfx/JPtree8.png")
+}
+
+spriteset (spriteset_jptree8_PURCHASE) {
+    template_tallflat(0,0,"gfx/JPtree8.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_jptree8_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree8(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree8_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree8_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree8_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_jptree8_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree8(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree8_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree8_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree8_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_jptree8_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree8(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree8_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree8_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree8_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_jptree8_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree8(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree8_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree8_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree8_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_jptree8_view, view) {
+    1:  spritelayout_jptree8_2;
+    2:  spritelayout_jptree8_3;
+    3:  spritelayout_jptree8_4;
+    spritelayout_jptree8_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_jptree8_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_jptree8_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_jptree8_purchase, view) {
+    1:  spritelayout_jptree8_2_purchase;
+    2:  spritelayout_jptree8_3_purchase;
+    3:  spritelayout_jptree8_4_purchase;
+    spritelayout_jptree8_1_purchase;
+}
+
+item (FEAT_OBJECTS, jptree8, 208) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_8);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_jptree8_object;
+        purchase: switch_jptree8_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree9************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_jptree9) {
+    template_tallflat(0,0,"gfx/JPtree9.png")
+}
+
+spriteset (spriteset_jptree9_SNOW) {
+    template_tallflat(0,0,"gfx/JPtree9.png")
+}
+
+spriteset (spriteset_jptree9_PURCHASE) {
+    template_tallflat(0,0,"gfx/JPtree9.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_jptree9_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree9(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree9_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree9_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree9_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_jptree9_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree9(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree9_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree9_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree9_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_jptree9_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree9(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree9_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree9_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree9_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_jptree9_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree9(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree9_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree9_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree9_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_jptree9_view, view) {
+    1:  spritelayout_jptree9_2;
+    2:  spritelayout_jptree9_3;
+    3:  spritelayout_jptree9_4;
+    spritelayout_jptree9_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_jptree9_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_jptree9_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_jptree9_purchase, view) {
+    1:  spritelayout_jptree9_2_purchase;
+    2:  spritelayout_jptree9_3_purchase;
+    3:  spritelayout_jptree9_4_purchase;
+    spritelayout_jptree9_1_purchase;
+}
+
+item (FEAT_OBJECTS, jptree9, 209) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_9);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_jptree9_object;
+        purchase: switch_jptree9_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree10************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_jptree10) {
+    template_tallflat(0,0,"gfx/JPtree10.png")
+}
+
+spriteset (spriteset_jptree10_SNOW) {
+    template_tallflat(0,0,"gfx/JPtree10.png")
+}
+
+spriteset (spriteset_jptree10_PURCHASE) {
+    template_tallflat(0,0,"gfx/JPtree10.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_jptree10_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree10(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree10_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree10_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree10_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_jptree10_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree10(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree10_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree10_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree10_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_jptree10_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree10(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree10_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree10_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree10_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_jptree10_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_jptree10(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_jptree10_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_jptree10_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_jptree10_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_jptree10_view, view) {
+    1:  spritelayout_jptree10_2;
+    2:  spritelayout_jptree10_3;
+    3:  spritelayout_jptree10_4;
+    spritelayout_jptree10_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_jptree10_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_jptree10_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_jptree10_purchase, view) {
+    1:  spritelayout_jptree10_2_purchase;
+    2:  spritelayout_jptree10_3_purchase;
+    3:  spritelayout_jptree10_4_purchase;
+    spritelayout_jptree10_1_purchase;
+}
+
+item (FEAT_OBJECTS, jptree10, 210) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_10);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_jptree10_object;
+        purchase: switch_jptree10_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree11************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_tree11) {
+    template_tallflat(0,0,"gfx/tree11.png")
+}
+
+spriteset (spriteset_tree11_SNOW) {
+    template_tallflat(0,0,"gfx/tree11.png")
+}
+
+spriteset (spriteset_tree11_PURCHASE) {
+    template_tallflat(0,0,"gfx/tree11.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_tree11_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree11(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree11_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree11_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree11_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_tree11_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree11(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree11_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree11_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree11_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_tree11_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree11(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree11_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree11_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree11_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_tree11_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree11(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree11_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree11_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree11_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_tree11_view, view) {
+    1:  spritelayout_tree11_2;
+    2:  spritelayout_tree11_3;
+    3:  spritelayout_tree11_4;
+    spritelayout_tree11_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_tree11_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_tree11_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_tree11_purchase, view) {
+    1:  spritelayout_tree11_2_purchase;
+    2:  spritelayout_tree11_3_purchase;
+    3:  spritelayout_tree11_4_purchase;
+    spritelayout_tree11_1_purchase;
+}
+
+item (FEAT_OBJECTS, tree11, 211) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_11);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_tree11_object;
+        purchase: switch_tree11_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree12************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_tree12) {
+    template_tallflat(0,0,"gfx/tree12.png")
+}
+
+spriteset (spriteset_tree12_SNOW) {
+    template_tallflat(0,0,"gfx/tree12.png")
+}
+
+spriteset (spriteset_tree12_PURCHASE) {
+    template_tallflat(0,0,"gfx/tree12.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_tree12_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree12(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree12_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree12_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree12_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_tree12_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree12(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree12_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree12_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree12_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_tree12_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree12(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree12_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree12_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree12_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_tree12_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree12(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree12_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree12_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree12_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_tree12_view, view) {
+    1:  spritelayout_tree12_2;
+    2:  spritelayout_tree12_3;
+    3:  spritelayout_tree12_4;
+    spritelayout_tree12_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_tree12_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_tree12_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_tree12_purchase, view) {
+    1:  spritelayout_tree12_2_purchase;
+    2:  spritelayout_tree12_3_purchase;
+    3:  spritelayout_tree12_4_purchase;
+    spritelayout_tree12_1_purchase;
+}
+
+item (FEAT_OBJECTS, tree12, 212) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_12);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_tree12_object;
+        purchase: switch_tree12_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree13************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_tree13) {
+    template_tallflat(0,0,"gfx/tree13.png")
+}
+
+spriteset (spriteset_tree13_SNOW) {
+    template_tallflat(0,0,"gfx/tree13.png")
+}
+
+spriteset (spriteset_tree13_PURCHASE) {
+    template_tallflat(0,0,"gfx/tree13.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_tree13_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree13(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree13_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree13_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree13_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_tree13_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree13(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree13_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree13_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree13_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_tree13_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree13(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree13_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree13_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree13_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_tree13_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree13(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree13_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree13_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree13_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_tree13_view, view) {
+    1:  spritelayout_tree13_2;
+    2:  spritelayout_tree13_3;
+    3:  spritelayout_tree13_4;
+    spritelayout_tree13_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_tree13_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_tree13_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_tree13_purchase, view) {
+    1:  spritelayout_tree13_2_purchase;
+    2:  spritelayout_tree13_3_purchase;
+    3:  spritelayout_tree13_4_purchase;
+    spritelayout_tree13_1_purchase;
+}
+
+item (FEAT_OBJECTS, tree13, 213) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_13);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_tree13_object;
+        purchase: switch_tree13_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree14************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_tree14) {
+    template_tallflat(0,0,"gfx/tree14.png")
+}
+
+spriteset (spriteset_tree14_SNOW) {
+    template_tallflat(0,0,"gfx/tree14.png")
+}
+
+spriteset (spriteset_tree14_PURCHASE) {
+    template_tallflat(0,0,"gfx/tree14.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_tree14_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree14(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree14_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree14_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree14_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_tree14_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree14(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree14_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree14_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree14_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_tree14_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree14(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree14_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree14_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree14_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_tree14_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree14(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree14_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree14_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree14_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_tree14_view, view) {
+    1:  spritelayout_tree14_2;
+    2:  spritelayout_tree14_3;
+    3:  spritelayout_tree14_4;
+    spritelayout_tree14_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_tree14_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_tree14_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_tree14_purchase, view) {
+    1:  spritelayout_tree14_2_purchase;
+    2:  spritelayout_tree14_3_purchase;
+    3:  spritelayout_tree14_4_purchase;
+    spritelayout_tree14_1_purchase;
+}
+
+item (FEAT_OBJECTS, tree14, 214) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_14);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_tree14_object;
+        purchase: switch_tree14_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree15************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_tree15) {
+    template_tallflat(0,0,"gfx/tree15.png")
+}
+
+spriteset (spriteset_tree15_SNOW) {
+    template_tallflat(0,0,"gfx/tree15.png")
+}
+
+spriteset (spriteset_tree15_PURCHASE) {
+    template_tallflat(0,0,"gfx/tree15.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_tree15_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree15(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree15_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree15_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree15_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_tree15_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree15(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree15_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree15_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree15_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_tree15_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree15(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree15_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree15_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree15_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_tree15_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree15(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree15_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree15_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree15_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_tree15_view, view) {
+    1:  spritelayout_tree15_2;
+    2:  spritelayout_tree15_3;
+    3:  spritelayout_tree15_4;
+    spritelayout_tree15_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_tree15_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_tree15_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_tree15_purchase, view) {
+    1:  spritelayout_tree15_2_purchase;
+    2:  spritelayout_tree15_3_purchase;
+    3:  spritelayout_tree15_4_purchase;
+    spritelayout_tree15_1_purchase;
+}
+
+item (FEAT_OBJECTS, tree15, 215) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_15);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_tree15_object;
+        purchase: switch_tree15_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree16************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_tree16) {
+    template_tallflat(0,0,"gfx/tree16.png")
+}
+
+spriteset (spriteset_tree16_SNOW) {
+    template_tallflat(0,0,"gfx/tree16.png")
+}
+
+spriteset (spriteset_tree16_PURCHASE) {
+    template_tallflat(0,0,"gfx/tree16.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_tree16_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree16(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree16_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree16_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree16_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_tree16_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree16(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree16_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree16_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree16_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_tree16_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree16(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree16_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree16_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree16_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_tree16_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree16(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree16_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree16_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree16_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_tree16_view, view) {
+    1:  spritelayout_tree16_2;
+    2:  spritelayout_tree16_3;
+    3:  spritelayout_tree16_4;
+    spritelayout_tree16_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_tree16_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_tree16_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_tree16_purchase, view) {
+    1:  spritelayout_tree16_2_purchase;
+    2:  spritelayout_tree16_3_purchase;
+    3:  spritelayout_tree16_4_purchase;
+    spritelayout_tree16_1_purchase;
+}
+
+item (FEAT_OBJECTS, tree16, 216) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_16);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_tree16_object;
+        purchase: switch_tree16_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree17************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_tree17) {
+    template_tallflat(0,0,"gfx/tree17.png")
+}
+
+spriteset (spriteset_tree17_SNOW) {
+    template_tallflat(0,0,"gfx/tree17.png")
+}
+
+spriteset (spriteset_tree17_PURCHASE) {
+    template_tallflat(0,0,"gfx/tree17.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_tree17_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: GROUNDSPRITE_WATER;
+   }
+    
+    building {
+        sprite: spriteset_tree17(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree17_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree17_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_WATER;
+   }
+   building {
+      sprite: spriteset_tree17_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_tree17_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree17(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree17_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree17_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree17_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_tree17_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree17(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree17_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree17_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree17_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_tree17_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree17(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree17_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree17_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree17_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_tree17_view, view) {
+    1:  spritelayout_tree17_2;
+    2:  spritelayout_tree17_3;
+    3:  spritelayout_tree17_4;
+    spritelayout_tree17_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_tree17_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_tree17_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_tree17_purchase, view) {
+    1:  spritelayout_tree17_2_purchase;
+    2:  spritelayout_tree17_3_purchase;
+    3:  spritelayout_tree17_4_purchase;
+    spritelayout_tree17_1_purchase;
+}
+
+item (FEAT_OBJECTS, tree17, 217) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_17);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_ON_WATER, OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_tree17_object;
+        purchase: switch_tree17_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree18************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_tree18) {
+    template_tallflat(0,0,"gfx/tree18.png")
+}
+
+spriteset (spriteset_tree18_SNOW) {
+    template_tallflat(0,0,"gfx/tree18.png")
+}
+
+spriteset (spriteset_tree18_PURCHASE) {
+    template_tallflat(0,0,"gfx/tree18.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_tree18_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree18(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree18_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree18_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree18_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_tree18_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree18(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree18_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree18_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree18_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_tree18_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree18(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree18_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree18_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree18_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_tree18_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree18(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree18_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree18_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree18_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_tree18_view, view) {
+    1:  spritelayout_tree18_2;
+    2:  spritelayout_tree18_3;
+    3:  spritelayout_tree18_4;
+    spritelayout_tree18_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_tree18_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_tree18_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_tree18_purchase, view) {
+    1:  spritelayout_tree18_2_purchase;
+    2:  spritelayout_tree18_3_purchase;
+    3:  spritelayout_tree18_4_purchase;
+    spritelayout_tree18_1_purchase;
+}
+
+item (FEAT_OBJECTS, tree18, 218) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_18);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_tree18_object;
+        purchase: switch_tree18_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
+}
+//************tree19************//
+//spritesets with 4 directions, SNOW-version and the PURCHASE-menu
+spriteset (spriteset_tree19) {
+    template_tallflat(0,0,"gfx/tree19.png")
+}
+
+spriteset (spriteset_tree19_SNOW) {
+    template_tallflat(0,0,"gfx/tree19.png")
+}
+
+spriteset (spriteset_tree19_PURCHASE) {
+    template_tallflat(0,0,"gfx/tree19.png")
+}
+/* spritelayouts */
+
+//Direction_1
+spritelayout spritelayout_tree19_1 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree19(0);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree19_SNOW(0);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree19_1_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree19_PURCHASE(0);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+
+//Direction_2
+spritelayout spritelayout_tree19_2 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree19(1);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree19_SNOW(1);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree19_2_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree19_PURCHASE(1);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+//Direction_3
+spritelayout spritelayout_tree19_3 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree19(2);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree19_SNOW(2);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree19_3_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree19_PURCHASE(2);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+
+
+//Direction_4
+spritelayout spritelayout_tree19_4 {
+    ground {
+      // normal ground sprite - always draw
+      sprite: LOAD_TEMP(0) + LOAD_TEMP(1);
+   }
+    
+    building {
+        sprite: spriteset_tree19(3);
+        hide_sprite: nearby_tile_height(0, 0) >= snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+building {
+        sprite: spriteset_tree19_SNOW(3);
+        hide_sprite: nearby_tile_height(0, 0) < snowline_height;
+        xoffset: 0; //from NE edge
+        yoffset: 0; //from NW edge
+        zoffset: 0;
+        xextent: 16;
+        yextent: 16;
+        zextent: 16;
+    }
+
+}
+
+spritelayout spritelayout_tree19_4_purchase {
+   ground {
+        sprite: GROUNDSPRITE_NORMAL;
+   }
+   building {
+      sprite: spriteset_tree19_PURCHASE(3);
+      xoffset: 0; //from NE edge
+                yoffset: 0; //from NW edge
+                zoffset: 0;
+                xextent: 16;
+                yextent: 16;
+                zextent: 16;
+   }
+}
+//decide spritelayout for each of the 4 directions
+switch (FEAT_OBJECTS, SELF, switch_tree19_view, view) {
+    1:  spritelayout_tree19_2;
+    2:  spritelayout_tree19_3;
+    3:  spritelayout_tree19_4;
+    spritelayout_tree19_1;
+}
+
+//calculate ground sprite for object
+switch (FEAT_OBJECTS, SELF, switch_tree19_object, [
+//  STORE_TEMP(0, 0),
+    STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+    STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+    STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+    STORE_TEMP(terrain_type == TILETYPE_SNOW   ? GROUNDSPRITE_SNOW : LOAD_TEMP(1), 1),
+    STORE_TEMP(snowline_height == 0xFF ? 0xFF : nearby_tile_height(0,0) - snowline_height, 127),
+    STORE_TEMP((LOAD_TEMP(127) == -1) ? GROUNDSPRITE_SNOW_1_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  0) ? GROUNDSPRITE_SNOW_2_4 : LOAD_TEMP(1), 1),
+    STORE_TEMP((LOAD_TEMP(127) ==  1) ? GROUNDSPRITE_SNOW_3_4 : LOAD_TEMP(1), 1)
+        ]) {
+    switch_tree19_view;
+}
+
+//calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_tree19_purchase, view) {
+    1:  spritelayout_tree19_2_purchase;
+    2:  spritelayout_tree19_3_purchase;
+    3:  spritelayout_tree19_4_purchase;
+    spritelayout_tree19_1_purchase;
+}
+
+item (FEAT_OBJECTS, tree19, 219) {
+    property {
+        class: "TREE";
+        classname: string(STR_TREE);
+        name: string(STR_TREE_19);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        build_cost_multiplier: 1;
+        remove_cost_multiplier: 4;
+        introduction_date:      date(1111,1,1);
+        end_of_life_date: 0xFFFFFFFF;
+        object_flags: bitmask(OBJ_FLAG_NO_FOUNDATIONS, OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_REMOVE_IS_INCOME);
+        height: 2;
+        num_views: 4;
+     }
+    graphics {
+        default: switch_tree19_object;
+        purchase: switch_tree19_purchase;
+        autoslope: return CB_RESULT_AUTOSLOPE;
+
+      }
 }
