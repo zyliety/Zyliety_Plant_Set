@@ -1,8 +1,8 @@
 ##grflangid 0x01
 
 #Main grf title and description
-STR_GRF_NAME        :Zyliety's Plant Set V1-Release
-STR_GRF_DESCRIPTION :{YELLOW}Zyliety's Plant Set,2024/7/9. {}{WHITE}Draw by: Zyliety, Moonlight. {}Code by:Zyliety.{}License:GPLv2 or higher
+STR_GRF_NAME        :Zyliety's Plant Set V2
+STR_GRF_DESCRIPTION :{YELLOW}Zyliety's Plant Set,2024/7/25. {}{WHITE}Draw by: Zyliety, Moonlight, Sanchimaru. {}Code by:Zyliety.{}License:GPLv2 or higher
 
 #error messages
 STR_OPENTTD_VERSION :1.2.0 (r22723)
@@ -13,6 +13,7 @@ STR_ZYPS		:{YELLOW}Zyliety Plant set
 STR_ObjectMenu		:Object Menu
 
 STR_PLAN            :    Plant Flields
+STR_TREE            :    Trees
 
 
 #object name and description
@@ -30,3 +31,26 @@ STR_FLOWER_11            :flower11
 STR_FLOWER_12            :flower12
 STR_FLOWER_13            :flower13
 STR_FLOWER_14            :flower14
+STR_FLOWER_15            :flower15
+STR_FLOWER_16            :bench,gazebo
+#############
+STR_TREE_0            :gingko0
+STR_TREE_1            :gingko1
+STR_TREE_2            :gingko2
+STR_TREE_3            :sakura1
+STR_TREE_4            :sakura2
+STR_TREE_5            :maple1
+STR_TREE_6            :maple2
+STR_TREE_7            :beech1
+STR_TREE_8            :beech2
+STR_TREE_9            :beech3
+STR_TREE_10            :bosk
+STR_TREE_11            :pine tree(matsu)
+STR_TREE_12            :momiji(small)/bamboo
+STR_TREE_13            :Phoenix tree
+STR_TREE_14            :momiji(large)
+STR_TREE_15            :persimmon/willow/sakura
+STR_TREE_16            :momiji(medium)/sakura
+STR_TREE_17            :waterliliy/temple/lycoris
+STR_TREE_18            :metesequoia
+STR_TREE_19            :parasol
